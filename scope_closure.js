@@ -8,11 +8,13 @@
  * Study the code below for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ * the Counter1 has reference Function , But counter2 has not reference function.
  * 
  * 2. Which of the two uses a closure? How can you tell?
+ * the counter1 is closure ,because counter1 Has the Reference Function and child function.
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ *the counter1 Preferable is the reference funtion and Child function, while counter2 have not .
 */
 
 // counter1 code
@@ -46,14 +48,16 @@ function motivation(firstname, lastname) {
   var welcomeText = 'You\'re doing awesome, keep it up ';
 
   // code message function here.
-
+    function message(){
+      return `${welcomeText} ${firstname} ${lastname}`
+    }
 
   //Uncommment this to return the value of your invoked message function
-  //return message();
+    return message();
 
 }
 
-motivation('Mohamed', 'Ali'); // 'You're doing awesome keep it up Mohamed Ali.
+console.log(motivation('Mohamed', 'Ali')); // 'You're doing awesome keep it up Mohamed Ali.
 
 
 /******************************************************************************\
@@ -71,12 +75,30 @@ var secondLevelFriends = ["Mahad", "Farah", "Mohamed"];
 var allUsers = ["Ahmed", "Khadijo", "Farah", "Mahad", "Mohamed", "Bashir", "Ali"];
 
 function findPotentialFriends(existingFriends) {
+return function (x){
+  for (var i = 0;i<friends.length;i++){
+    if (friends.indexOf(allUsers)>= 0){
+      return false;
+    }
+    else {
+      return true;
+    }
+
+  }
+}
 
 }
 
-var isNotAFriend = findPotentialFriends( friends );
-// isNotAFriend(allUsers[0]); // false
-// isNotAFriend(secondLevelFriends[2]); // true
+
+var isNotAFriend = findPotentialFriends(friends);
+isNotAFriend(allUsers[3]); // false
+
+console.log(isNotAFriend(allUsers[3]));
+
+var isNotAFriend = findPotentialFriends(friends);
+isNotAFriend(allUsers[0]); // false
+
+console.log(isNotAFriend(allUsers[0]));
 
 
 /******************************************************************************\
@@ -97,15 +119,15 @@ to 5. What we need to do is console.log(i) so that it logs like so:
  a closure to preserve a reference to i at the time of execution.
  Fix the code below to log the desired output.
  */
-
-function timeOutCounter() {
-  for (var i = 0; i <= 5; i++) {
+ function timeOutCounter() {
+  for (let i = 0; i <= 5; i++) {
     setTimeout(function() {
-    	console.log(i)
-	}, i * 1000)
+    	console.log(`${i} Seconds After Call - Log ${i}`)
+	}, i* 1000)
   }
 }
 timeOutCounter();
+
 
 
 /******************************************************************************\
@@ -119,7 +141,22 @@ timeOutCounter();
   If it does, invoke the callback with true as the argument. 
   If the name does not exist, invoke the callback with false as the argument.
 */
-
+const arr = ['Ali', 'Ahmed', 'Hersi', 'Farah'];
+const myName = ['Hamdi', 'Ali', 'Ahmed', 'Farah', 'Mohamoud' , 'Hoodo','Mona'];
+function contains(arr, myName, cb){
+  return cb(arr, myName)
+}
+function cb(arr, myName){
+  for (let i = 0 ; i < arr.length; i++)
+   
+    if (myName.indexOf(arr[i]) >= 0){
+      console.log('True');
+    }
+  else{
+   console.log('False')
+  }
+}
+console.log(contains(arr , myName, cb));
 
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
